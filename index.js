@@ -5,8 +5,8 @@ const bodyParser  = require('body-parser');
 const knexConfig  = require('./knexfile');
 const knex        = require('knex')(knexConfig[ENV]);
 const knexLogger  = require('knex-logger');
+const cors        = require('./cors');
 const app         = express();
-
 // Separated routes for each resource
 const sortedRoomsRoutes = require('./routes/sorted_rooms');
 const vpiPreferencesRoutes = require('./routes/vpi_preferences');
@@ -15,6 +15,7 @@ const startRoomSorterRoutes = require('./routes/start_room_sorter');
 
 app.use(knexLogger(knex));
 app.use(bodyParser.json());
+app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Mount all resource routes
