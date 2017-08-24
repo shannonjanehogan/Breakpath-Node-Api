@@ -44,12 +44,13 @@ exports.up = (knex, Promise) => Promise.all([
     table.string('room_type'); // overall room skill level
     table.timestamps();
   }),
-  knex.schema.createTableIfNotExists('sign_up_preferences', (table) => {
+  knex.schema.createTableIfNotExists('debate_sign_up_preferences', (table) => {
     table.increments('id').primary().notNullable();
     table.integer('user_id');
     table.foreign('user_id').references('users.id');
     table.string('name');
     table.string('debater_preference');
+    table.string('partner_preference');
     table.integer('partner_preference_id');
     table.foreign('partner_preference_id').references('users.id');
     table.timestamps();
@@ -66,7 +67,7 @@ exports.up = (knex, Promise) => Promise.all([
 
 exports.down = (knex, Promise) => Promise.all([
   knex.schema.dropTable('judges'),
-  knex.schema.dropTable('sign_up_preferences'),
+  knex.schema.dropTable('debate_sign_up_preferences'),
   knex.schema.dropTable('vpi_preferences'),
   knex.schema.dropTable('sorted_rooms'),
   knex.schema.dropTable('teams'),
