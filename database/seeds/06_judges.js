@@ -3,6 +3,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return Promise.all([
         knex('judges').insert({ user_id: 9, sorted_room_id: 1 }),
+        knex('judges').insert({ user_id: 10, sorted_room_id: 1 }),
       ]);
     });
 };
