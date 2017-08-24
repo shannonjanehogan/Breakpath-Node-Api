@@ -8,7 +8,7 @@ module.exports = (knex) => {
       .select('*')
       .from('sorted_rooms')
       .then((results) => {
-        res.json(results);
+        res.status(200).json(results);
     });
   });
 

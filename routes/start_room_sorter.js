@@ -19,7 +19,7 @@ module.exports = (knex) => {
     Promise.all([
       knex.select('*').from('rooms'),
       knex.select('*')
-        .from('vpi_preferences'),
+        .from('vpi_preferences')
         .where({ created_at: currentDate }), // currently not working, can remove this line for demo
       knex.select('*')
         .from('debate_sign_up_preferences')
@@ -33,7 +33,7 @@ module.exports = (knex) => {
       // TODO when the room sorter has finished, take the results that the room sorter returns and send them back in the response
       // e.g. sortedRooms = CallToPythonScript(rooms, vpi_preferences, debater_preferences, knex)
       // note that when you call the room sorter script, you need to pass in knex so that you can save items to the database
-      res.json(sortedRooms); // sorted rooms returned from the room sorter script
+      res.status(200).json(sortedRooms); // sorted rooms returned from the room sorter script
     })
   });
 

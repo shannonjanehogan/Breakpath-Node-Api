@@ -13,7 +13,7 @@ module.exports = (knex) => {
       'created_at': moment(),
       'updated_at': moment(),
     }).then((results) => {
-      res.json(results);
+      res.status(200).json(results);
     });
   });
 
