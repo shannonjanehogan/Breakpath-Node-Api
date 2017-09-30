@@ -36,8 +36,6 @@ module.exports = (knex, jwt) => {
  });
 
  router.post("/signup", function(req, res) {
-   console.log('what is the password', req.body.password)
-   console.log('what is the req body', req.body)
    return bcrypt.hash(req.body.password, saltRounds).then(function(hash) {
     knex('users')
     .returning('id')
@@ -50,11 +48,9 @@ module.exports = (knex, jwt) => {
       'created_at': moment(),
       'updated_at': moment(),
     }).then((results) => {
-      console.log('what is the result', results[0])
       var payload = { id: results[0] };
       var token = jwt.encode(payload, cfg.jwtSecret);
-      console.log('what is the token', token)
-      res.status(200).json({ token: "hi" });
+      res.status(200).json({ token });
     });
   });
  })
