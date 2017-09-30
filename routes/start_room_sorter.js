@@ -19,11 +19,11 @@ module.exports = (knex) => {
     Promise.all([
       knex.select('*').from('rooms'),
       knex.select('*')
-        .from('vpi_preferences')
-        .where({ created_at: currentDate }), // currently not working, can remove this line for demo
+        .from('vpi_preferences'),
+        // .where({ created_at: currentDate }), // currently not working, can remove this line for demo
       knex.select('*')
-        .from('debate_sign_up_preferences')
-        .where({ created_at: currentDate }), // currently not working, can remove this line for demo
+        .from('debate_sign_up_preferences'),
+        // .where({ created_at: currentDate }), // currently not working, can remove this line for demo
     ]).then((promiseResults) => {
       console.log('what are the promiseResults', promiseResults)
       rooms = promiseResults[0];

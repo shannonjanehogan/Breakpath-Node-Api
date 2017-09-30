@@ -2,7 +2,7 @@ exports.seed = function(knex, Promise) {
   return knex('users').del()
     .then(function () {
       return Promise.all([
-        knex('users').insert({ id: 1, first_name: 'Severus', last_name: 'Snape', skill_level: 'nov' }),
+        knex('users').insert({ id: 1, email: 'sev@hogwarts.com', first_name: 'Severus', last_name: 'Snape', skill_level: 'nov' }),
         knex('users').insert({ id: 2, first_name: 'Hermione', last_name: 'Granger', skill_level: 'pro' }),
         knex('users').insert({ id: 3, first_name: 'Ginny', last_name: 'Weasley', skill_level: 'pro' }),
         knex('users').insert({ id: 4, first_name: 'Lily', last_name: 'Potter', skill_level: 'pro' }),
