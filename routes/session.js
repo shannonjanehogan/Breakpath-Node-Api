@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
-const cfg = require("../config.js");
+const cfg = require('../config.js');
 const moment = require('moment');
 const saltRounds = 10;
 

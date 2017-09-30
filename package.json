@@ -14,7 +14,8 @@
     "moment": "^2.18.1",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
-    "pg": "^7.2.0"
+    "pg": "^7.2.0",
+    "string-hash": "^1.1.3"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
