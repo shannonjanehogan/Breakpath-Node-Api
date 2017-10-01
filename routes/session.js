@@ -7,7 +7,7 @@ const saltRounds = 10;
 
 module.exports = (knex, jwt) => {
 
-  router.post("/token", function(req, res) {
+  router.post("/token", (req, res) => {
     if (req.body.email && req.body.password) {
         var email = req.body.email;
         var password = req.body.password;
@@ -17,12 +17,11 @@ module.exports = (knex, jwt) => {
           'email': req.body.email,
         }).then((results) => {
           if (results.length === 1) {
-              const user = results[0]
-              return bcrypt.compare(password, user.hashed_password).then(function(res) {
-                var payload = { id: user.id };
+              const user = results[0];
+              return bcrypt.compare(password, user.hashed_password).then((response) => {
+                var payload = { id: user.id, admin: user.admin };
                 var token = jwt.encode(payload, cfg.jwtSecret);
-                console.log('what is the token', token)
-                res.json({ token: token });
+                res.json({ token });
               }).catch((err) => {
                 res.sendStatus(401);
               })
@@ -44,11 +43,12 @@ module.exports = (knex, jwt) => {
       'last_name': req.body.last_name,
       'skill_level': req.body.skill_level,
       'email': req.body.email,
+      'admin': false,
       'hashed_password': hash,
       'created_at': moment(),
       'updated_at': moment(),
     }).then((results) => {
-      var payload = { id: results[0] };
+      var payload = { id: results[0], admin: false };
       var token = jwt.encode(payload, cfg.jwtSecret);
       res.status(200).json({ token });
     });

@@ -7,6 +7,7 @@ exports.up = (knex, Promise) => Promise.all([
     table.string('hashed_password');
     table.string('email');
     table.string('skill_level');
+    table.boolean('admin');
     table.timestamps();
   }),
   knex.schema.createTableIfNotExists('rooms', (table) => {

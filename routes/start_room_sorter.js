@@ -1,6 +1,7 @@
 const express = require('express');
 const Promise = require('bluebird');
 const moment  = require('moment');
+const SortedRoom = require('../room_sorter_script/dataParser');
 const router  = express.Router();
 
 module.exports = (knex) => {
@@ -29,11 +30,15 @@ module.exports = (knex) => {
       rooms = promiseResults[0];
       vpi_preference = promiseResults[1];
       debater_preferences = promiseResults[2];
+      // return dataParser(rooms, vpi_preference, debater_preferences, knex)
+      // .then((sortedRooms) => {
+      //
+      // })
       // TODO start the room sorter script here and pass in these variables
       // TODO when the room sorter has finished, take the results that the room sorter returns and send them back in the response
       // e.g. sortedRooms = CallToPythonScript(rooms, vpi_preferences, debater_preferences, knex)
       // note that when you call the room sorter script, you need to pass in knex so that you can save items to the database
-      res.status(200).json(sortedRooms); // sorted rooms returned from the room sorter script
+      res.status(200); // sorted rooms returned from the room sorter script
     })
   });
 
