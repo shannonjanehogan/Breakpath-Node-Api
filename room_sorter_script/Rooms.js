@@ -1,5 +1,5 @@
 const stringHash = require('string-hash');
-const { Teams, TeamSkill } = require('./Teams.js');
+const { Teams, TeamSkillEnum } = require('./Teams.js');
 
 class Rooms {
 
@@ -22,8 +22,8 @@ class Rooms {
   // sets the room status to the most common team skill level
   calc_status = () => {
     const teams = new Set(this.og, this.oo, this.cg, this.co);
-    const number = { TeamSkill.WORLDS: 0, TeamSkill.PRO: 0, TeamSkill.PROAM: 0, TeamSkill.NOV: 0 };
-    const max = null;
+    const number = { [TeamSkillEnum.WORLDS]: 0, [TeamSkillEnum.PRO]: 0, [TeamSkillEnum.PROAM]: 0, [TeamSkillEnum.NOV]: 0 };
+    let max = null;
     for (let team of teams) {
       number[team.skill] += 1;
       if (number[team.skill] > max) {

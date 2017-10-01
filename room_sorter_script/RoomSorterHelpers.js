@@ -3,7 +3,7 @@ const { Team, TeamSkillEnum } = require('.Teams');
 
 const find_random = (group) => {
   return group[Math.floor(Math.random() * group.length)];
-}
+};
 
 // When extra teams, remove pro teams first, then novs, then proam, then worlds from debating
 const remove_team = (teams_pro, teams_nov, teams_proam, teams_adv) => {
@@ -17,24 +17,24 @@ const remove_team = (teams_pro, teams_nov, teams_proam, teams_adv) => {
   } else (teams_adv.length > 0) {
       group = teams_adv;
   }
-}
+};
 
 // Add team to team list
 const add_team = (teams_adv, teams_pro, teams_proam, teams_nov, team) => {
   let group;
-  if (team.skill == TeamSkill.WORLDS) {
+  if (team.skill == TeamSkillEnum.WORLDS) {
     group = teams_adv
-  } else if (team.skill === TeamSkill.PRO) {
+  } else if (team.skill === TeamSkillEnum.PRO) {
     group = teams_pro
-  } else if (team.skill === TeamSkill.PROAM) {
+  } else if (team.skill === TeamSkillEnum.PROAM) {
     group = teams_proam
-  } else (team.skill === TeamSkill.NOV) {
+  } else (team.skill === TeamSkillEnum.NOV) {
     group = teams_nov;
   }
   if (!group.has(team)) {
     group.add(team);
   }
-}
+};
 
 // Create team with specified debaters (called with partner_pref)
 const create_team = (teams_adv, teams_pro, teams_proam, teams_nov, d1, g1, d2, g2) => {
@@ -42,7 +42,7 @@ const create_team = (teams_adv, teams_pro, teams_proam, teams_nov, d1, g1, d2, g
   g1.delete(d1);
   g2.delete(d2);
   add_team(teams_adv, teams_pro, teams_proam, teams_nov, team);
-}
+};
 
 // Create team with random debaters (called with no partner_pref)
 const create_team_random = (teams_adv, teams_pro, teams_proam, teams_nov, g1, g2) => {
@@ -52,7 +52,7 @@ const create_team_random = (teams_adv, teams_pro, teams_proam, teams_nov, g1, g2
   g2.delete(d2);
   const team = new Team(d1, d2);
   add_team(teams_adv, teams_pro, teams_proam, teams_nov, team);
-}
+};
 
 // Set length to whichever of pro or nov debaters is shorter, then create that number of random pro-am teams
 const handle_proam = (debaters_pro, debaters_nov, teams_adv, teams_pro, teams_proam, teams_nov) => {
@@ -65,7 +65,7 @@ const handle_proam = (debaters_pro, debaters_nov, teams_adv, teams_pro, teams_pr
   for (let i = 0, i < length, i++) {
     create_team_random(teams_adv, teams_pro, teams_proam, teams_nov, debaters_pro, debaters_nov);
   }
-}
+};
 
 // Create full rooms while there are enough teams
 const make_rooms_full = (rooms, judges, sorted_rooms, team_group) => {
@@ -87,7 +87,7 @@ const make_rooms_full = (rooms, judges, sorted_rooms, team_group) => {
     room.calc_status();
     sorted_rooms.add(room);
   }
-}
+};
 
 // Create half rooms while there are enough teams
 const make_rooms_half = (rooms, judges, sorted_rooms, team_group) => {
@@ -104,4 +104,4 @@ const make_rooms_half = (rooms, judges, sorted_rooms, team_group) => {
     room.calc_status();
     sorted_rooms.add(room);
   }
-}
+};

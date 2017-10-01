@@ -28,26 +28,26 @@ class RoomSorter {
     this.sort_partners();
     this.make_teams();
     this.make_rooms();
-  }
+  };
 
   // sort participants into appropriate set
   const sort_participants = () => {
     for (let participant of this.participants) {
       if (participant.status === StatusEnum.JUDGE) {
         this.judges.add(participant);
-      } else if (participant.status == Status.JUDGE_OR_DEBATE) {
+      } else if (participant.status === Status.JUDGE_OR_DEBATE) {
         this.judge_or_debate.add(participant)
-      } else if (participant.status == Status.DEBATER) {
-        if (participant.status == DebaterSkill.ADVANCED) {
+      } else if (participant.status === Status.DEBATER) {
+        if (participant.status === DebaterSkill.ADVANCED) {
           this.debaters_adv.add(participant)
-        } else if (participant.status == DebaterSkill.PRO) {
+        } else if (participant.status === DebaterSkill.PRO) {
           this.debaters_pro.add(participant)
-        } else if (participant.status == DebaterSkill.NOV) {
+        } else if (participant.status === DebaterSkill.NOV) {
           this.debaters_nov.add(participant);
         }
       }
     }
-  }
+  };
 
   // make teams if debaters have partner_preference
   const sort_partners = () => {
@@ -81,7 +81,7 @@ class RoomSorter {
         }
       }
     }
-  }
+  };
 
   const handle_extras = () => {
     const extras = (this.debaters_nov.length + this.debaters_pro.length + this.debaters_adv.length);
@@ -106,27 +106,7 @@ class RoomSorter {
       }
       return null;
     }
-  }
-
-  // Go through all groups, make teams according to VPI preference
-  const make_teams = () => {
-    if (this.vpi_pref === TeamSkill.PROAM) {
-        handle_proam(this.debaters_pro, this.debaters_nov, this.teams_adv, this.teams_pro, this.teams_proam,
-                     this.teams_nov)
-    }
-    for (let group of this.debaters) {
-      while (group.length >= 2) {
-        create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, group, group)
-      }
-    }
-    // Judgment call made here that adv debaters should have priority for a pro partner
-    // TODO: Confirm
-    if ((this.debaters_adv.length === 1) && (this.debaters_pro.length === 1)) {
-      create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, group, this.debaters_pro);
-    }
-    const ironperson = this.handle_extras();
-    maths(ironperson);
-  }
+  };
 
   const maths = (ironperson) => {
     let number_teams = 0;
@@ -200,7 +180,27 @@ class RoomSorter {
       remove_team(this.teams_pro, this.teams_nov, this.teams_proam, this.teams_adv);
       number_teams -= 1;
     }
-  }
+  };
+
+  // Go through all groups, make teams according to VPI preference
+  const make_teams = () => {
+    if (this.vpi_pref === TeamSkill.PROAM) {
+        handle_proam(this.debaters_pro, this.debaters_nov, this.teams_adv, this.teams_pro, this.teams_proam,
+                     this.teams_nov)
+    }
+    for (let group of this.debaters) {
+      while (group.length >= 2) {
+        create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, group, group)
+      }
+    }
+    // Judgment call made here that adv debaters should have priority for a pro partner
+    // TODO: Confirm
+    if ((this.debaters_adv.length === 1) && (this.debaters_pro.length === 1)) {
+      create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, group, this.debaters_pro);
+    }
+    const ironperson = this.handle_extras();
+    maths(ironperson);
+  };
 
   const make_rooms = () => {
     if (this.vpi_pref) {
@@ -223,7 +223,7 @@ class RoomSorter {
           team_group.delete(team);
         }
       // Judgement call that half rooms should be novs
-      } else if (team_group.length !== 0) && (group_number === 3) {
+    } else if ((team_group.length !== 0) && (group_number === 3)) {
         make_rooms_half(this.rooms, this.judges, this.sorted_rooms, team_group);
       }
       group_number += 1;
@@ -234,5 +234,5 @@ class RoomSorter {
       room.judges.add(judge);
       this.judges.delete(judge);
     }
-  }
+  };
 }

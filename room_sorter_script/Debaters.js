@@ -1,17 +1,17 @@
 const stringHash = require('string-hash');
 
 const DebaterSkillEnum = {
-  NOV = 'NOV',
-  PRO = 'PRO',
-  ADVANCED = 'ADVANCED',
+  NOV: 'NOV',
+  PRO: 'PRO',
+  ADVANCED: 'ADVANCED',
 };
 
 
 const StatusEnum = {
-  DEBATER = 'DEBATER',
-  JUDGE = 'JUDGE',
-  JUDGE_OR_DEBATE = 'JUDGE_OR_DEBATE',
-  SPECTATOR = 'SPECTATOR',
+  DEBATER: 'DEBATER',
+  JUDGE: 'JUDGE',
+  JUDGE_OR_DEBATE: 'JUDGE_OR_DEBATE',
+  SPECTATOR: 'SPECTATOR',
 };
 
 class DebaterSkill {
@@ -22,11 +22,11 @@ class DebaterSkill {
     this.partner_pref = partner_pref;
     this.skill = skill;
     this.team = null;
-  }
+  };
 
   valueOf = () => {
     return stringHash(name);
-  }
+  };
 
 }
 

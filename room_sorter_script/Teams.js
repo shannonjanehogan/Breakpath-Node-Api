@@ -1,10 +1,10 @@
 const { Debater, DebaterSkillEnum } = require('./Debaters.js');
 
 const TeamSkillEnum = {
-  WORLDS = 'WORLDS',
-  PROAM = 'PROAM',
-  NOV = 'NOV',
-  PRO = 'PRO',
+  WORLDS: 'WORLDS',
+  PROAM: 'PROAM',
+  NOV: 'NOV',
+  PRO: 'PRO',
 };
 
 class Team {
@@ -16,25 +16,25 @@ class Team {
     debater_two.team = this;
     this.name = this.debater_one.name + "/" + this.debater_two.name;
     this.skill = this.team_skill();
-  }
+  };
 
   valueOf = () => {
     return this.debater_one.valueOf() + this.debater_two.valueOf();
-  }
+  };
 
   teamSkill = () => {
-    if ((this.debater_one.skill === DebaterSkill.ADVANCED) && (this.debater_two.skill === DebaterSkill.ADVANCED)) {
-        return TeamSkill.WORLDS;
+    if ((this.debater_one.skill === DebaterSkillEnum.ADVANCED) && (this.debater_two.skill === DebaterSkillEnum.ADVANCED)) {
+        return TeamSkillEnum.WORLDS;
     }
-    if ((this.debater_one === (DebaterSkill.PRO || DebaterSkill.ADVANCED) &&
-       (this.debater_two === (DebaterSkill.PRO || DebaterSkill.ADVANCED)) {
-        return TeamSkill.PRO;
+    if ((this.debater_one === (DebaterSkillEnum.PRO || DebaterSkillEnum.ADVANCED) &&
+       (this.debater_two === (DebaterSkillEnum.PRO || DebaterSkillEnum.ADVANCED)) {
+        return TeamSkillEnum.PRO;
     }
-    if ((this.debater_one === DebaterSkill.NOV) && (this.debater_two === DebaterSkill.NOV)) {
-        return TeamSkill.NOV;
+    if ((this.debater_one === DebaterSkillEnum.NOV) && (this.debater_two === DebaterSkillEnum.NOV)) {
+        return TeamSkillEnum.NOV;
     }
-    return TeamSkill.PROAM;
-  }
+    return TeamSkillEnum.PROAM;
+  };
 
 }
 
