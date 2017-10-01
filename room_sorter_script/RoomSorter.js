@@ -199,7 +199,7 @@ class RoomSorter {
       create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, group, this.debaters_pro);
     }
     const ironperson = this.handle_extras();
-    maths(ironperson);
+    this.maths(ironperson);
   };
 
   const make_rooms = () => {

@@ -21,7 +21,7 @@ class Rooms {
 
   // sets the room status to the most common team skill level
   calc_status = () => {
-    const teams = new Set(this.og, this.oo, this.cg, this.co);
+    const teams = new Set([this.og, this.oo, this.cg, this.co]);
     const number = { [TeamSkillEnum.WORLDS]: 0, [TeamSkillEnum.PRO]: 0, [TeamSkillEnum.PROAM]: 0, [TeamSkillEnum.NOV]: 0 };
     let max = null;
     for (let team of teams) {
