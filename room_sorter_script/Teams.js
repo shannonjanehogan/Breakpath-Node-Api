@@ -18,11 +18,11 @@ class Team {
     this.skill = this.team_skill();
   };
 
-  valueOf = () => {
+  valueOf() {
     return this.debater_one.valueOf() + this.debater_two.valueOf();
   };
 
-  teamSkill = () => {
+  teamSkill() {
     if ((this.debater_one.skill === DebaterSkillEnum.ADVANCED) && (this.debater_two.skill === DebaterSkillEnum.ADVANCED)) {
         return TeamSkillEnum.WORLDS;
     }

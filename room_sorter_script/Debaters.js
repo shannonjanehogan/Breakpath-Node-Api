@@ -24,7 +24,7 @@ class DebaterSkill {
     this.team = null;
   };
 
-  valueOf = () => {
+  valueOf() {
     return stringHash(name);
   };
 

@@ -31,18 +31,18 @@ class RoomSorter {
   };
 
   // sort participants into appropriate set
-  const sort_participants = () => {
+  sort_participants() {
     for (let participant of this.participants) {
       if (participant.status === StatusEnum.JUDGE) {
         this.judges.add(participant);
       } else if (participant.status === Status.JUDGE_OR_DEBATE) {
         this.judge_or_debate.add(participant)
       } else if (participant.status === Status.DEBATER) {
-        if (participant.status === DebaterSkill.ADVANCED) {
+        if (participant.status === DebaterSkillEnum.ADVANCED) {
           this.debaters_adv.add(participant)
-        } else if (participant.status === DebaterSkill.PRO) {
+        } else if (participant.status === DebaterSkillEnum.PRO) {
           this.debaters_pro.add(participant)
-        } else if (participant.status === DebaterSkill.NOV) {
+        } else if (participant.status === DebaterSkillEnum.NOV) {
           this.debaters_nov.add(participant);
         }
       }
@@ -50,7 +50,7 @@ class RoomSorter {
   };
 
   // make teams if debaters have partner_preference
-  const sort_partners = () => {
+  sort_partners() {
     let partner_found = false;
     for (let group of this.debaters) {
       for (let debater of group) {
@@ -83,7 +83,7 @@ class RoomSorter {
     }
   };
 
-  const handle_extras = () => {
+  handle_extras() {
     const extras = (this.debaters_nov.length + this.debaters_pro.length + this.debaters_adv.length);
     if (extras === 0) {
       return null;
@@ -108,7 +108,7 @@ class RoomSorter {
     }
   };
 
-  const maths = (ironperson) => {
+  maths(ironperson) {
     let number_teams = 0;
     let number_judges = this.judges.length;
     let number_either = this.judge_or_debate.length;
@@ -183,8 +183,8 @@ class RoomSorter {
   };
 
   // Go through all groups, make teams according to VPI preference
-  const make_teams = () => {
-    if (this.vpi_pref === TeamSkill.PROAM) {
+  make_teams() {
+    if (this.vpi_pref === TeamSkillEnum.PROAM) {
         handle_proam(this.debaters_pro, this.debaters_nov, this.teams_adv, this.teams_pro, this.teams_proam,
                      this.teams_nov)
     }
@@ -202,7 +202,7 @@ class RoomSorter {
     maths(ironperson);
   };
 
-  const make_rooms = () => {
+  make_rooms() {
     if (this.vpi_pref) {
       for (let team_group of this.teams) {
         if (find_random(team_group).skill === this.vpi_pref) {
