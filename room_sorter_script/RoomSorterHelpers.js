@@ -105,3 +105,6 @@ const make_rooms_half = (rooms, judges, sorted_rooms, team_group) => {
     sorted_rooms.add(room);
   }
 };
+
+module.exports = { find_random, remove_team, add_team, create_team, create_team_random, handle_proam,
+    make_rooms_full, make_rooms_half };

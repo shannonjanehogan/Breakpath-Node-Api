@@ -236,3 +236,5 @@ class RoomSorter {
     }
   };
 }
+
+module.exports = RoomSorter;
