@@ -35,9 +35,9 @@ class RoomSorter {
     for (let participant of this.participants) {
       if (participant.status === StatusEnum.JUDGE) {
         this.judges.add(participant);
-      } else if (participant.status === Status.JUDGE_OR_DEBATE) {
+      } else if (participant.status === StatusEnum.JUDGE_OR_DEBATE) {
         this.judge_or_debate.add(participant)
-      } else if (participant.status === Status.DEBATER) {
+      } else if (participant.status === StatusEnum.DEBATER) {
         if (participant.status === DebaterSkillEnum.ADVANCED) {
           this.debaters_adv.add(participant)
         } else if (participant.status === DebaterSkillEnum.PRO) {
@@ -141,14 +141,14 @@ class RoomSorter {
     while (number_either > 0) {
       let extra_teams = number_teams % 4;
       if (extra_teams === 0) {
-        judge = find_random(judge_or_debate);
+        judge = find_random(this.judge_or_debate);
         this.judges.add(judge);
         this.judge_or_debate.delete(judge);
         number_judges += 1;
         number_either -= 1;
       }
       if (ironperson && (number_either >= (7 - extra_teams * 2))) {
-        const d2 = find_random(judge_or_debate);
+        const d2 = find_random(this.judge_or_debate);
         const team = new Team(ironperson, d2);
         this.judge_or_debate.delete(d2);
         add_team(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, team);
@@ -196,7 +196,7 @@ class RoomSorter {
     // Judgment call made here that adv debaters should have priority for a pro partner
     // TODO: Confirm
     if ((this.debaters_adv.length === 1) && (this.debaters_pro.length === 1)) {
-      create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, group, this.debaters_pro);
+      create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, this.debaters_adv, this.debaters_pro);
     }
     const ironperson = this.handle_extras();
     this.maths(ironperson);
@@ -205,7 +205,8 @@ class RoomSorter {
   make_rooms() {
     if (this.vpi_pref) {
       for (let team_group of this.teams) {
-        if (find_random(team_group).skill === this.vpi_pref) {
+        const team = find_random(team_group);
+        if (team.skill === this.vpi_pref) {
           while (team_group.length >= 4) {
             make_rooms_full(this.rooms, this.judges, this.sorted_rooms, team_group);
           }

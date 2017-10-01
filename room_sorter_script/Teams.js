@@ -15,7 +15,7 @@ class Team {
     this.debater_two = debater_two;
     debater_two.team = this;
     this.name = this.debater_one.name + "/" + this.debater_two.name;
-    this.skill = this.team_skill();
+    this.skill = this.teamSkill();
   };
 
   valueOf() {
