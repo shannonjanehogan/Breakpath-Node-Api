@@ -14,21 +14,23 @@ const remove_team = (teams_pro, teams_nov, teams_proam, teams_adv) => {
       group = teams_nov;
   } else if (teams_proam.length > 0) {
       group = teams_proam;
-  } else (teams_adv.length > 0) {
+  } else {
       group = teams_adv;
   }
+  const team = find_random(group);
+  group.delete(team)
 };
 
 // Add team to team list
 const add_team = (teams_adv, teams_pro, teams_proam, teams_nov, team) => {
   let group;
-  if (team.skill == TeamSkillEnum.WORLDS) {
+  if (team.skill === TeamSkillEnum.WORLDS) {
     group = teams_adv
   } else if (team.skill === TeamSkillEnum.PRO) {
     group = teams_pro
   } else if (team.skill === TeamSkillEnum.PROAM) {
     group = teams_proam
-  } else (team.skill === TeamSkillEnum.NOV) {
+  } else {
     group = teams_nov;
   }
   if (!group.has(team)) {
@@ -70,7 +72,7 @@ const handle_proam = (debaters_pro, debaters_nov, teams_adv, teams_pro, teams_pr
 // Create full rooms while there are enough teams
 const make_rooms_full = (rooms, judges, sorted_rooms, team_group) => {
   while (team_group.length >= 4) {
-    const room = find_random(room);
+    const room = find_random(rooms);
     rooms.delete(room);
     room.og = find_random(team_group);
     team_group.delete(room.og);
@@ -92,7 +94,7 @@ const make_rooms_full = (rooms, judges, sorted_rooms, team_group) => {
 // Create half rooms while there are enough teams
 const make_rooms_half = (rooms, judges, sorted_rooms, team_group) => {
   while (team_group.length >= 2) {
-    const room = find_random(room);
+    const room = find_random(rooms);
     rooms.delete(room);
     room.og = find_random(team_group);
     team_group.delete(room.og);

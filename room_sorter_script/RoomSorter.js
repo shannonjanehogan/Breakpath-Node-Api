@@ -113,7 +113,7 @@ class RoomSorter {
     let number_judges = this.judges.length;
     let number_either = this.judge_or_debate.length;
     for (let team of this.teams) {
-      number_teams += len(team);
+      number_teams += team.length;
     }
     let judges_needed = Math.ceil(number_teams / 4);
     while ((judges_needed > number_judges) && (number_either > 0)) {
@@ -132,7 +132,7 @@ class RoomSorter {
       if (to_remove === 0) {
         to_remove = 4;
       }
-      for (let count = 0, count < to_remove, count++) {
+      for (let count = 0; count < to_remove; count++) {
         remove_team(this.teams_pro, this.teams_nov, this.teams_proam, this.teams_adv);
         number_teams -= 1;
         judges_needed = Math.ceil(number_teams / 4);
@@ -141,7 +141,7 @@ class RoomSorter {
     while (number_either > 0) {
       let extra_teams = number_teams % 4;
       if (extra_teams === 0) {
-        judge = find_random(this.judge_or_debate);
+        const judge = find_random(this.judge_or_debate);
         this.judges.add(judge);
         this.judge_or_debate.delete(judge);
         number_judges += 1;
@@ -154,14 +154,14 @@ class RoomSorter {
         add_team(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov, team);
         number_either -= 1;
         number_teams += 1;
-        for (let count = 0, count < (3 - extra_teams), count++)  {
+        for (let count = 0; count < (3 - extra_teams); count++)  {
           create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov,
                              this.judge_or_debate, this.judge_or_debate);
           number_either -= 2;
           number_teams += 1;
         }
       } else if (number_either >= (8 - extra_teams * 2)) {
-        for (let count = 0, count < (4 - extra_teams), count++) {
+        for (let count = 0; count < (4 - extra_teams); count++) {
           create_team_random(this.teams_adv, this.teams_pro, this.teams_proam, this.teams_nov,
                              this.judge_or_debate, this.judge_or_debate);
           number_either -= 2;
@@ -178,7 +178,6 @@ class RoomSorter {
     // Judgement call room with 2 teams better than room with 3
     if (number_teams % 2 === 1) {
       remove_team(this.teams_pro, this.teams_nov, this.teams_proam, this.teams_adv);
-      number_teams -= 1;
     }
   };
 

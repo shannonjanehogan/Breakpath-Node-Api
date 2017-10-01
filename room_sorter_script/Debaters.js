@@ -14,7 +14,7 @@ const StatusEnum = {
   SPECTATOR: 'SPECTATOR',
 };
 
-class DebaterSkill {
+class Debater {
 
   constructor (name, status, skill, partner_pref) {
     this.name = name;
@@ -30,4 +30,4 @@ class DebaterSkill {
 
 }
 
-module.exports = { DebaterSkill, DebaterSkillEnum, StatusEnum };
+module.exports = { Debater, DebaterSkillEnum, StatusEnum };
