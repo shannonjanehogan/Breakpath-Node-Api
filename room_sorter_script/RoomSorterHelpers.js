@@ -62,7 +62,7 @@ const handle_proam = (debaters_pro, debaters_nov, teams_adv, teams_pro, teams_pr
   } else {
     length = debaters_nov.length;
   }
-  for (let i = 0, i < length, i++) {
+  for (let i = 0; i < length; i++) {
     create_team_random(teams_adv, teams_pro, teams_proam, teams_nov, debaters_pro, debaters_nov);
   }
 };
