@@ -1,0 +1,1 @@
+Some files are encrypted with git-crypt. Send a message if you want access.
