@@ -26,8 +26,8 @@ class Team {
     if ((this.debater_one.skill === DebaterSkillEnum.ADVANCED) && (this.debater_two.skill === DebaterSkillEnum.ADVANCED)) {
         return TeamSkillEnum.WORLDS;
     }
-    if ((this.debater_one === (DebaterSkillEnum.PRO || DebaterSkillEnum.ADVANCED) &&
-       (this.debater_two === (DebaterSkillEnum.PRO || DebaterSkillEnum.ADVANCED)) {
+    if ((this.debater_one === (DebaterSkillEnum.PRO || DebaterSkillEnum.ADVANCED)) &&
+       (this.debater_two === (DebaterSkillEnum.PRO || DebaterSkillEnum.ADVANCED))) {
         return TeamSkillEnum.PRO;
     }
     if ((this.debater_one === DebaterSkillEnum.NOV) && (this.debater_two === DebaterSkillEnum.NOV)) {

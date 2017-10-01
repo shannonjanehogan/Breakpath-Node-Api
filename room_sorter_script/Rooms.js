@@ -1,7 +1,7 @@
 const stringHash = require('string-hash');
 const { Teams, TeamSkillEnum } = require('./Teams.js');
 
-class Rooms {
+class Room {
 
   constructor (name) {
     this.name = name;
@@ -35,4 +35,4 @@ class Rooms {
 
 }
 
-module.exports = Rooms;
+module.exports = Room;
