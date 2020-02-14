@@ -1,4 +1,4 @@
-const { Debater, DebaterSkillEnum } = require('./Debaters.js');
+const { Debater, DebaterSkillEnum } = require('./Debater.js');
 
 const TeamSkillEnum = {
   WORLDS: 'WORLDS',

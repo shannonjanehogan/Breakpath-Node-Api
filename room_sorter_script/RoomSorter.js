@@ -1,7 +1,7 @@
 const { find_random, remove_team, add_team, create_team, create_team_random, handle_proam,
     make_rooms_full, make_rooms_half } = require('./RoomSorterHelpers');
-const { DebaterSkillEnum, StatusEnum, Debater } = require('./Debaters');
-const Room = require('./Room');
+const { DebaterSkillEnum, StatusEnum, Debater } = require('./Debater');
+const Room = require('./Rooms');
 const { TeamSkillEnum, Team } = require('./Teams');
 
 class RoomSorter {

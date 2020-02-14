@@ -1,5 +1,5 @@
-const Debater = require('./Debaters');
-const { Team, TeamSkillEnum } = require('.Teams');
+const Debater = require('./Debater');
+const { Team, TeamSkillEnum } = require('./Teams');
 
 const find_random = (group) => {
   return group[Math.floor(Math.random() * group.length)];
@@ -52,6 +52,9 @@ const create_team_random = (teams_adv, teams_pro, teams_proam, teams_nov, g1, g2
   g1.delete(d1);
   const d2 = find_random(g2);
   g2.delete(d2);
+  console.log("WHAT IS EVEN");
+  console.log("this is d1", d1);
+  console.log("this is d2", d2);
   const team = new Team(d1, d2);
   add_team(teams_adv, teams_pro, teams_proam, teams_nov, team);
 };

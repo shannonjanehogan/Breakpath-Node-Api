@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
         knex('users').insert({ admin: true, email: 'sev1@hogwarts.com', first_name: 'Hermione', last_name: 'Granger', skill_level: 'pro' }),
         knex('users').insert({ admin: false, email: 'sev2@hogwarts.com', first_name: 'Ginny', last_name: 'Weasley', skill_level: 'pro' }),
         knex('users').insert({ admin: false, email: 'sev3@hogwarts.com', first_name: 'Lily', last_name: 'Potter', skill_level: 'pro' }),
-        knex('users').insert({ admin: false, email: 'sev4@hogwarts.com', first_name: 'Rob', last_name: 'Potter', skill_level: 'pro' }),
+        knex('users').insert({ admin: false, email: 'sev4@hogwarts.com', first_name: 'James', last_name: 'Potter', skill_level: 'pro' }),
         knex('users').insert({ admin: false, email: 'sev5@hogwarts.com', first_name: 'Fred', last_name: 'Weasley', skill_level: 'nov' }),
         knex('users').insert({ admin: false, email: 'sev6@hogwarts.com', first_name: 'George', last_name: 'Weasley', skill_level: 'nov' }),
         knex('users').insert({ admin: false, email: 'sev7@hogwarts.com', first_name: 'Albus', last_name: 'Dumbledore', skill_level: 'pro' }),
